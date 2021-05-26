@@ -41,7 +41,7 @@ console.log("end");
 
 ##### console 結果 :
 >start->IIFE->end->Timeout<br>
->setTimeout(fn,0)將事件放入web Apis，必須等到當前代碼執行完，才會去執行回調函數
+>setTimeout(fn,0)將他丟入web Apis,然後進入task queue，必須等到當前代碼執行完，才會去執行回調函數
 
 ## (3)請問下列程式執行的結果為何？為什麼？
 
@@ -89,5 +89,5 @@ foo();
 
 ##### console 結果 :
 >foo->baz->bar<br>
->首先呼叫了foo,先出現foo,因為setTimeout(fn,0)將事件放入web Apis，必須等到當前代碼執行完，才會去執行回調函數,所以先baz再來bar
+>首先呼叫了foo,先出現foo,因為setTimeout(fn,0)將他丟入web Apis,然後進入task queue，必須等到當前代碼執行完，才會去執行回調函數,所以先baz再來bar
 
