@@ -32,7 +32,7 @@
             }
         }
         xhr.onprogress = function(e) {
-          console.log(`Received ${event.loaded} of ${event.total} bytes`);
+          console.log(`Received ${e.loaded} of ${e.total} bytes`);
         }
         xhr.onerror = function() {
             console.log("request failed");
