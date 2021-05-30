@@ -61,7 +61,7 @@
         xhr.open('GET', url);
         xhr.onload = function () {
           if (this.status == 200) {
-            resolve(this.response);
+            resolve(this.responseText);
           } else {
             reject(this.status);
           }
