@@ -43,6 +43,9 @@ readStock()
           console.log(res.data.title);
       }
     })
+    .catch((err) => {
+      console.error(err);
+    })
   })
   
     
