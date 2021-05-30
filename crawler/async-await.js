@@ -39,7 +39,7 @@ async function getData() {
               stockNo: code,
             }
           });
-        console.log(info.title);
+        console.log(info.data.title);
     } catch(err) {
         console.log("錯誤", err);
     }
