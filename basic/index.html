@@ -41,7 +41,7 @@
     })
     
     //async
-    asyncBtn.addEventListener('click', function() {
+    /*asyncBtn.addEventListener('click', function() {
         let xhr = new XHRHttpRequest();
         xhr.open('GET', 'http://34.217.120.25:3000');
         xhr.send();
@@ -50,7 +50,39 @@
                 console.log('async success');
             }
         }
+         
+    })*/
 
-    })
+    //promise
+    function xhrPromise(url) {
+      return new Promise((resolve, reject) => {
+        //
+        let xhr = new XHRHttpRequest();
+        xhr.open('GET', url);
+        xhr.onload = function () {
+          if (this.status == 200) {
+            resolve(this.response);
+          } else {
+            reject(this.status);
+          }
+        };
+        xhr.onerror = function () {
+            reject(this.status);
+          };
+        xhr.send();
+      })
+    }
+
+
+    asyncBtn.addEventListener('click', function() {
+      xhrPromise('http://34.217.120.25:3000').then(
+        result => console.log(result), 
+        error => console.log(error)
+      )
+    });
+
+
+    
+
   </script>
 </html>
