@@ -76,8 +76,8 @@
 
     asyncBtn.addEventListener('click', function() {
       xhrPromise('http://34.217.120.25:3000').then(
-        result => console.log(result), 
-        error => console.log(error)
+        result => message.innerText = `async ${result}`, 
+        error => message.innerText = `async err ${error}`
       )
     });
 
