@@ -3,8 +3,8 @@ const fs = require('fs');
 
 
 function readStock() {
-  return new Promise(function (res, rej) {
-    fs.readFile('stock.txt', function (err, data) {
+  return new Promise(function(res, rej) {
+    fs.readFile('stock.txt', function(err, data) {
       if (err) {
         rej(err);
       } else {
