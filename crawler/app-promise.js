@@ -16,7 +16,8 @@ function readStock() {
 
 readStock()
   .then((data) => {
-    return axios.get(`https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20210528&stockNo=${data}&_=1622187642107`).then(function (res) {
+    return axios.get(`https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20210528&stockNo=${data}&_=1622187642107`)
+    .then(function (res) {
       console.log(res);
       if (res.data.stat === 'OK') {
           console.log(res.data.date);
