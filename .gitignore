@@ -125,3 +125,9 @@ dist
 
 #img
 *.png
+
+#sql
+*.sql
+
+#class code
+/teacher code
