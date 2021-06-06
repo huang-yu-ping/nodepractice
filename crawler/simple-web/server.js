@@ -1,4 +1,6 @@
 const http = require('http');
+
+
 const server = http.createServer((req, res) => {
   console.log(req.url);
   res.statusCode = 200;
@@ -7,8 +9,10 @@ const server = http.createServer((req, res) => {
   switch (req.url) {
       case '/':
           res.end('hi, index page');
-      case 'test':
+      case '/test':
           res.end('test page');
+      case '/about':
+            res.end('about page');
           break;
       default:
           res.writeHead(404);
