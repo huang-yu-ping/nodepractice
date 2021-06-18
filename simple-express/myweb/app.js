@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-const connection = require('./utils/db');
+const router = require('./routes/router');
 
 var log4js = require('log4js');
 
@@ -23,21 +23,10 @@ app.set('views', path.join(__dirname, './views/'));
 
 app.use(express.static(path.join(__dirname, './public/')))
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
-app.get('/about', (req, res) => {
-  res.render('about');
-})
 
-app.get('/stock', async (req, res) => {
-  let stocks = await connection.queryAsync("SELECT * FROM stock");
-  //logger.debug(stocks)
-  res.render('stock/list', {
-    stocks
-  })
-})
+app.use(router);
 
 app.listen('3000', function() {
     console.log('running...');
 })
+//
