@@ -1,6 +1,11 @@
 const express = require('express');
 const path = require('path');
+
+const connection = require('./utils/db');
+
 var log4js = require('log4js');
+
+
 //配置
 log4js.configure({
   appenders: { cheese: { type: "file", filename: "cheese.log" } },
@@ -23,6 +28,14 @@ app.get('/', (req, res) => {
 })
 app.get('/about', (req, res) => {
   res.render('about');
+})
+
+app.get('/stock', async (req, res) => {
+  let stocks = await connection.queryAsync("SELECT * FROM stock");
+  //logger.debug(stocks)
+  res.render('stock/list', {
+    stocks
+  })
 })
 
 app.listen('3000', function() {

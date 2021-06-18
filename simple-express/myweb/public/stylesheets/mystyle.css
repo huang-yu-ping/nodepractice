@@ -1,0 +1,14 @@
+html {
+  box-sizing: border-box;
+}
+*,*:before,*:after {
+  box-sizing: inherit;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.stock-table {
+  width : 800px;
+  margin: 0 auto;
+}
