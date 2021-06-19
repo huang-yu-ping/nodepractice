@@ -1,0 +1,19 @@
+extends ../_layouts/master
+
+block content
+  div(class="contaniner")
+    h1(class="text-center") 股票 Info
+    table(class='stock-table table table-success table-striped table-hover')
+      tr
+        td 日期
+        td 開盤價
+        td 最高價
+        td 最低價
+        td 收盤價
+      each info in resultInfo
+        tr 
+          td #{info.date}
+          td #{info.open_price}
+          td #{info.high_price}
+          td #{info.low_price}
+          td #{info.close_price}

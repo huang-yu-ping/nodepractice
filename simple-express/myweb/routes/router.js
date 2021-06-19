@@ -8,4 +8,6 @@ router.get('/about', controllers.showAbout)
 
 router.get('/stock', controllers.stockList)
 
+router.get('/stock/:stockCode', controllers.stockInfo)
+
 module.exports = router;

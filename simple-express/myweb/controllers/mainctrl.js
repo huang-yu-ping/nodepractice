@@ -21,14 +21,24 @@ const showAbout =  (req, res) => {
 
 const stockList = async (req, res) => {
     let stocks = await connection.queryAsync("SELECT * FROM stock");
-    logger.debug(stocks)
+    //logger.debug(stocks)
     res.render('stock/list', {
       stocks
     })
   }
 
+const  stockInfo = async (req, res) => {
+  //res.send(req.params.stockCode)
+  let resultInfo = await connection.queryAsync("SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date;", req.params.stockCode);
+  res.render('stock/detail', {
+    resultInfo
+  })
+
+}
+
 module.exports = {
     showIndex,
     showAbout,
-    stockList
+    stockList,
+    stockInfo
 }
