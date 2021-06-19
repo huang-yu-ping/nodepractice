@@ -3,7 +3,7 @@ const http = require('http');
 const path = require('path');
 
 const router = require('./routes/router');
-
+const apiRouter = require('./routes/api');
 
 const app = express();
 
@@ -13,7 +13,11 @@ app.set('views', path.join(__dirname, './views/'));
 
 app.use(express.static(path.join(__dirname, './public/')))
 
+
+app.use('/api', apiRouter);
 app.use(router);
+
+
 
 app.use(function(req, res) {
     res.status(404);
