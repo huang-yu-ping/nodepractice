@@ -9,7 +9,7 @@ var logger = log4js.getLogger('cheese');
 logger.level = 'debug';
 //-----------------------------------------------
 const connection = require('../utils/db');
-
+const models = require('../models/stock');
 
 
 const showIndex = (req, res) => {
@@ -20,7 +20,7 @@ const showAbout =  (req, res) => {
   }
 
 const stockList = async (req, res) => {
-    let stocks = await connection.queryAsync("SELECT * FROM stock");
+    let stocks = await models.getStockList("SELECT * FROM stock");
     //logger.debug(stocks)
     res.render('stock/list', {
       stocks
