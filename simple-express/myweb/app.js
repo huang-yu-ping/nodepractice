@@ -1,11 +1,10 @@
 const express = require('express');
-const http = require('http');
 const path = require('path');
 
+const app = express();
 const router = require('./routes/router');
 const apiRouter = require('./routes/api');
 
-const app = express();
 
 
 app.set('view engine', 'pug');
@@ -29,7 +28,9 @@ app.use(function(err, req, res, next) {
     res.status(500).send(err.message);
   })
 
-http.createServer(app).listen('3000', function() {
+
+
+app.listen(3000, function() {
     console.log('running...');
 })
 //
