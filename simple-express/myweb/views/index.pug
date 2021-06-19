@@ -2,7 +2,12 @@ extends _layouts/master
 
 block content
   h1 this is home page
-
+  table#app
+  script(id='mytemplate' type='text/template')
+      tr
+        td 
+          <%= stock_id %> <%= stock_name %>
+      
 
 block scripts 
   script(src="/javascripts/api.js")
