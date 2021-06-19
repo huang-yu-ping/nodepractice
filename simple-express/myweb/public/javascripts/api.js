@@ -1,4 +1,4 @@
-async function getApi() {
+/*async function getApi() {
     let response = await fetch('api/stocks');
 
   if (response.ok) {
@@ -8,4 +8,14 @@ async function getApi() {
     alert("HTTP-Error: " + response.status);
   }
 }
-getApi()
+getApi()*/
+
+//axios
+async function getApi() {
+    let res = await axios.get('api/stocks');
+    console.log('123')
+    console.log(res);
+}
+getApi();
+
+
