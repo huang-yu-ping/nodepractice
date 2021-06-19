@@ -19,7 +19,7 @@ const showAbout =  (req, res) => {
     res.render('about');
   }
 
-const stockList = async (req, res) => {
+const stockList = async(req, res) => {
     let stocks = await models.getStockList("SELECT * FROM stock");
     //logger.debug(stocks)
     res.render('stock/list', {
@@ -27,12 +27,12 @@ const stockList = async (req, res) => {
     })
   }
 
-const  stockInfo = async (req, res) => {
+const  stockInfo = async (req, res, next) => {
   //res.send(req.params.stockCode)
   
   let stock = await connection.queryAsync("SELECT * FROM stock WHERE stock_id = ?;", req.params.stockCode);
   if (stock.length == 0) {
-    throw new Error('查無代碼');
+    next();
   }
 
   let stockName = stock[0].stock_name;

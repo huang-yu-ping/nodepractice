@@ -15,6 +15,16 @@ app.use(express.static(path.join(__dirname, './public/')))
 
 app.use(router);
 
+app.use(function(req, res) {
+    res.status(404);
+    res.render('error');
+  })
+
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send(err.message);
+  })
+
 http.createServer(app).listen('3000', function() {
     console.log('running...');
 })
