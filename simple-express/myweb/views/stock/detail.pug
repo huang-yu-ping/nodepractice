@@ -2,7 +2,7 @@ extends ../_layouts/master
 
 block content
   div(class="contaniner")
-    h1(class="text-center") 股票 Info
+    h1(class="text-center") 股票 Info : #{stockName} #{stockId}
     table(class='stock-table table table-success table-striped table-hover')
       tr
         td 日期
@@ -17,3 +17,14 @@ block content
           td #{info.high_price}
           td #{info.low_price}
           td #{info.close_price}
+    ul(class="pagination justify-content-center mt-2")
+      - for(var p = 1; p <= pagination.allPage; p++)
+        li(class="pagination page-item")
+          a(href=`/stock/${stockId}?page=${p}` class="page-link") #{p}
+        
+
+
+   
+
+    
+      
