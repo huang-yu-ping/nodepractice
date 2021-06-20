@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
+const mime = require('mime')
 const connection = require('../utils/db');
 const { body, validationResult } = require("express-validator");
 var router = express.Router();
@@ -25,7 +26,8 @@ const myStorage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     // 抓出副檔名
-    const ext = file.originalname.split(".").pop();
+    //const ext = file.originalname.split(".").pop();
+    const ext = path.parse(file.originalname).ext;
     // 組合出自己想要的檔案名稱
     cb(null, `${file.fieldname}-${Date.now()}.${ext}`);
   }
