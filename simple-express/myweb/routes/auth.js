@@ -78,10 +78,10 @@ router.post('/register', uploader.single('avatar'), registerRules, async (req, r
         return next(new Error("email已註冊"));
       }
     await bcrypt.hash(req.body.password, 10)
-
+    let filepath = req.file ? `/uploads/${req.file.filename}` : null;
     let result = await connection.queryAsync(
         "INSERT INTO members (email, password, name, photo) VALUES (?);",
-        [[req.body.email, req.body.password, req.body.name,`/uploads/${req.file.filename}`]]
+        [[req.body.email, req.body.password, req.body.name, filepath]]
     )
 
 
